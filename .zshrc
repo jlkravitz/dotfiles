@@ -64,7 +64,16 @@ alias vision="~/.vision.exp;clear"
 alias vm="VBoxManage startvm cs144-lab3 --type headless"
 alias vmoff="VBoxManage controlvm cs144-lab3 savestate"
 alias vmssh="ssh cs144@192.168.56.10"
-alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+
+# For managing configuration files with git
+# Inspired by:
+#   1) https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+#   2) https://news.ycombinator.com/item?id=11070797
+#
+# To copy onto another computer:
+#   1) `git clone --bare <git-repo-url> $HOME/.myconfig`
+#   2) `config checkout`.
+alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 
 # Add path to homebrew packages
