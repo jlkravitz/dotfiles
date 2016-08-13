@@ -1,0 +1,20 @@
+[user]
+	name = Joshua Kravitz
+	email = jlkravitz@gmail.com
+[core]
+    editor = /usr/bin/vim
+	  excludesfile = ~/.gitignore
+[alias]
+    st = status
+    co = checkout
+    di = diff HEAD
+    dh = diff --staged
+    l = log --graph --oneline --decorate --date-order --color --boundary
+    c = commit -am
+
+    ; Source: http://gitready.com/intermediate/2009/02/18/temporarily-ignoring-files.html
+    ignore = update-index --assume-unchanged 
+    unignore = update-index --no-assume-unchanged
+    ignored = !echo "Ignored files:" && git ls-files -v | grep "^[[:lower:]]" | awk '{print $2}'
+[push]
+	default = simple
