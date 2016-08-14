@@ -48,6 +48,15 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]"  history-substring-search-down
 
+
+# Automatically list directory contents on `cd`.
+auto-ls () {
+    emulate -L zsh;
+    # ls aliases not honored in here.
+    ls -GFh
+}
+chpwd_functions=( auto-ls $chpwd_functions )
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load default dotfiles, paths, etc.
