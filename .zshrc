@@ -1,6 +1,6 @@
 source ~/.zsh-antigen/antigen/antigen.zsh
 
-# antigen use oh-my-zsh
+antigen use oh-my-zsh
 
 # Bundles
 antigen bundle git
