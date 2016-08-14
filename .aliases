@@ -15,8 +15,8 @@ alias cp="cp -v"
 alias ag="ag -f --hidden"
 
 # ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes, G = color
-alias ls="ls -AFhG"
-# alias la="ls -a"
+alias ls="ls -FhG"
+alias la="ls -a"
 alias ll="ls -l"
 
 # Networking. IP address, dig, DNS
