@@ -68,10 +68,6 @@ set expandtab
 " Make statusline appear even with only single window.
 set laststatus=2
 
-" Relative line numbers
-set number
-set relativenumber
-
 " Column number shown
 set ruler
 

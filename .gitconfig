@@ -10,7 +10,7 @@
     di = diff HEAD
     dh = diff --staged
     l = log --graph --oneline --decorate --date-order --color --boundary
-    c = commit -am
+    cam = commit -am
 
     ; Source: http://gitready.com/intermediate/2009/02/18/temporarily-ignoring-files.html
     ignore = update-index --assume-unchanged 
