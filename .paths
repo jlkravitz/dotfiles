@@ -1,0 +1,9 @@
+# Add path to homebrew packages
+# Even though /usr/local/bin was already on the path, we want
+# it to before /usr/bin so that homebrew programs are used
+# instead of system programs.
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PATH:/usr/local/mysql/bin
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH="/usr/local/Cellar/bison/3.0.4/bin/:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"

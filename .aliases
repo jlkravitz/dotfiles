@@ -1,0 +1,47 @@
+# Easier navigation: .., ..., ~, and -
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"  # ???
+
+# mv, rm, cp
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias cp="cp -v"
+
+alias ag="ag -f --hidden"
+
+# ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes, G = color
+alias ls="ls -AFhG"
+# alias la="ls -a"
+alias ll="ls -l"
+
+# Networking. IP address, dig, DNS
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# Recursively delete `.DS_Store` files
+alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Empty the Trash on all mounted volumes and the main HDD. then clear the
+# useless sleepimage
+alias emptytrash=" \
+  sudo rm -rfv /Volumes/*/.Trashes; \
+  rm -rfv ~/.Trash/*; \
+  sudo rm -v /private/var/vm/sleepimage; \
+"
+
+alias brew_update="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor"
+
+# For managing configuration files with git
+# Inspired by:
+#   1) https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+#   2) https://news.ycombinator.com/item?id=11070797
+#
+# To copy onto another computer:
+#   1) `git clone --bare <git-repo-url> $HOME/.myconfig`
+#   2) `config checkout`.
+alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
