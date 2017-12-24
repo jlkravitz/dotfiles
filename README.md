@@ -1,6 +1,6 @@
 To setup:
 
-`git clone --bare <git-repo-url> $HOME/.myconfig`
+`git clone --bare git@github.com:jlkravitz/dotfiles.git $HOME/.myconfig`
 
 `config checkout`
 
