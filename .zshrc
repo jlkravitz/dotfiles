@@ -12,14 +12,12 @@ antigen bundle brew
 antigen bundle brew-cask
 antigen bundle osx
 antigen bundle python
-antigen bundle virtualenv
-antigen bundle virtualenvwrapper
 antigen bundle pip
 
-# antigen theme cloud
+antigen theme cloud
 # pure theme, doesn't use theme command
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+# antigen bundle mafredri/zsh-async
+# antigen bundle sindresorhus/pure
 
 # Tell antigen that we're done.
 antigen apply

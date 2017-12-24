@@ -30,7 +30,3 @@ export HISTTIMEFORMAT='%F %T '
 export HISTCONTROL=ignoredups:erasedups         # no duplicate entries
 export HISTSIZE=100000                          # big big history (default is 500)
 export HISTFILESIZE=$HISTSIZE                   # big big history
-
-# virtualenvs
-export WORKON_HOME=~/virtualenvs # directory for virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh

@@ -13,6 +13,8 @@ Plug 'bling/vim-airline'                  " bottom info bar
 Plug 'airblade/vim-gitgutter'             " git diff in gutter
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
+Plug 'maverickg/stan.vim'
+Plug 'highwaynoise/chuck.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -22,9 +24,10 @@ call plug#end()
 " Probably some other source, but this fixes it.
 set backspace=indent,eol,start
 
-
-" So plugins can be extracted to `~/.vim/bundle`.
-" execute pathogen#infect()
+" Add comments on new line and other cases.
+" Was working in some filetypes (like .vim) without this, but not others,
+" like python.
+set formatoptions+=rco
 
 """" 1. Vim Behaviour.
 " Use filetype-based syntax hilighting, ftplugins, and indentation.
@@ -37,7 +40,7 @@ set encoding=utf-8
 set number
 " Enables mouse support. Note that on Mac OS X this doesn't work well on the
 " default terminal.
-set mouse=a
+set mouse+=a
 
 """" 2. Key Bindings.
 " More convenient movement when lines are wrapped.
@@ -60,16 +63,19 @@ set nrformats=
 let mapleader = ","
 
 " Tab settings
+" https://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim/18415867#18415867
 set autoindent
-set smartindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 " Make statusline appear even with only single window.
 set laststatus=2
 
 " Column number shown
 set ruler
+
+" So I don't have to do :set paste and :set nopaste
+set pastetoggle=
 
 " COLORSCHEME
 " If I ever have problems with Solarized:
@@ -107,4 +113,4 @@ autocmd BufNewFile,BufRead *.flex set syntax=lex
 
 
 " PINTOS
-set tw=79
+" set tw=79

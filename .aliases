@@ -23,7 +23,7 @@ alias ll="ls -l"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Recursively delete `.DS_Store` files
-alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+alias cleandstore="find . -name '*.DS_Store' -type f -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD. then clear the
 # useless sleepimage
@@ -33,7 +33,7 @@ alias emptytrash=" \
   sudo rm -v /private/var/vm/sleepimage; \
 "
 
-alias brew_update="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor"
+alias brewdate="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor"
 
 # For managing configuration files with git
 # Inspired by:
