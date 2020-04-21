@@ -15,6 +15,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
 Plug 'maverickg/stan.vim'
 Plug 'highwaynoise/chuck.vim'
+Plug 'JuliaEditorSupport/julia-vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -65,8 +66,8 @@ let mapleader = ","
 " Tab settings
 " https://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim/18415867#18415867
 set autoindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 " Make statusline appear even with only single window.
 set laststatus=2
