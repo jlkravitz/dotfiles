@@ -16,6 +16,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'maverickg/stan.vim'
 Plug 'highwaynoise/chuck.vim'
 Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -97,6 +98,7 @@ let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_extensions = ['line']
 
 autocmd BufNewFile,BufRead *.flex set syntax=lex
+autocmd BufNewFile,BufRead *.gs set filetype=javascript
 
 " For setting the cursor to where it was before
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
