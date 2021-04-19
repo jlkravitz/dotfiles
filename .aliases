@@ -21,10 +21,8 @@ alias ls="ls -FhG"
 alias la="ls -a"
 alias ll="ls -l"
 
-alias sp="cd ~/Documents/Senior\ Project/; source activate ibdforum;"
-
 # Networking. IP address, dig, DNS
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip="host myip.opendns.com resolver1.opendns.com"
 
 # Recursively delete `.DS_Store` files
 alias cleandstore="find . -name '*.DS_Store' -type f -ls -delete"
