@@ -36,3 +36,10 @@ source /Users/joshua/.config/broot/launcher/bash/br
 prompt pure
 prompt_newline='%666v'
 PROMPT=" $PROMPT"
+
+# Show exit code of last command as a separate prompt character
+PROMPT='%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
+
+# Show number of jobs in prompt
+PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+
