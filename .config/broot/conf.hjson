@@ -154,9 +154,14 @@
 		# Example:
 		#  execution: nvim +{line} {file}
 		{
+      key: "enter"
+			execution: "$EDITOR +{line} {file}"
+			leave_broot: false
+		}
+		{
 			invocation: edit
       key: "ctrl-e"
-			execution: "$EDITOR +{line} {file}"
+			execution: "open {file}"
 			leave_broot: false
 		}
 
