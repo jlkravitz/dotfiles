@@ -62,6 +62,11 @@ set number
 " jump up or down to a particular line, by {count}k to go up or {count}j to go
 " down.
 set relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Enables mouse support. Note that on Mac OS X this doesn't work well on the
 " default terminal. You should avoid relying on this too much, but it can
@@ -73,8 +78,10 @@ set noerrorbells visualbell t_vb=
 
 """" 2. Key Bindings.
 " More convenient movement when lines are wrapped.
-nmap j gj
-nmap k gk
+" 4/28/21: Removed binding, gj and gk correspond to *visual* lines,
+"   which are not as nice when working with relative line numbers.
+" nmap j gj
+" nmap k gk
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
