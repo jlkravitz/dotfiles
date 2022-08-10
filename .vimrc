@@ -128,6 +128,7 @@ set pastetoggle=
 " https://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized
 " Also, if I ever have to use a default colorscheme, `desert` is the one.
 set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
 
 " vim: set ft=vim foldmethod=marker ts=4 sw=4 tw=80 et :
