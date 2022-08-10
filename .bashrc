@@ -3,7 +3,7 @@
 # Mac doesn't have __git_ps1 by default: http://stackoverflow.com/questions/10435117/ps1-env-variable-does-not-work-on-mac
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
 PROMPT_COMMAND='DIR=`pwd|sed -e "s!$HOME!~!"`; if [ ${#DIR} -gt 30 ]; then CurDir=${DIR:0:12}...${DIR:${#DIR}-15}; else CurDir=$DIR; fi'
-PS1="\u\[\e[1;34m\][\$CurDir] \[\e[1;32m\]$(__git_ps1)\[\e[0m\]\$ "
+PS1='\u\[\e[1;34m\][$CurDir] \[\e[1;32m\]$(__git_ps1)\[\e[0m\]\$ '
 
 # History stuffs
 export HISTFILE=~/.bash_history
