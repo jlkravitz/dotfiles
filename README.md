@@ -2,10 +2,11 @@ To setup:
 
 `git clone --bare https://github.com/jlkravitz/dotfiles.git $HOME/.myconfig`
 
-`config checkout`
-
 `alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'`
+
 `config config --local status.showUntrackedFiles no`
+
+`config checkout`
 
 Per [https://github.com/junegunn/vim-plug](https://github.com/junegunn/vim-plug), install VIM Plug:
 `curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
