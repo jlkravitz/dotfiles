@@ -31,6 +31,9 @@ bindkey -v # Vim Keybindings, put before fzf cause otherwise backwards history s
 
 source /Users/joshua/.config/broot/launcher/bash/br
 
+autoload -U promptinit
+promptinit
+
 # Make pure a single-line prompt
 # https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#single-line-prompt
 prompt pure
