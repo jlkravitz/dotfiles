@@ -21,6 +21,8 @@ if [ -f '/Users/joshua/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/joshua/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joshua/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
 export PATH="$HOME/.bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -45,4 +47,13 @@ PROMPT='%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 
 # Show number of jobs in prompt
 PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+
+# virtualenvwrapper settings
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /Users/joshua/Library/Python/3.9/bin//virtualenvwrapper.sh
+
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+PROMPT+='%{$fg[green]%}$(virtualenv_info)%{$reset_color%}%'
 
