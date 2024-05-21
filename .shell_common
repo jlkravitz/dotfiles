@@ -1,3 +1,6 @@
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
+source /Users/joshua/Library/Python/3.9/bin/virtualenvwrapper.sh
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.

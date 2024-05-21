@@ -6,7 +6,7 @@ Plug 'altercation/vim-colors-solarized'   " solarized colorscheme
 Plug 'scrooloose/nerdtree'                " file navigation
 map <C-n> :NERDTreeToggle<CR>
 
-Plug 'tpope/vim-fugitive'                 " git support
+" Plug 'tpope/vim-fugitive'                 " git support
 Plug 'kien/ctrlp.vim'                     " fuzzy search
 Plug 'bling/vim-airline'                  " bottom info bar
 " Plug 'Valloric/YouCompleteMe'             " code completion

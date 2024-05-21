@@ -1,3 +1,4 @@
+export PATH="/Users/joshua/Library/Python/3.9/bin:$PATH"
 # `brew install coreutils` installs ls, cat, etc., but prepends a g.
 # This ensures normal ls does the right thing.
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

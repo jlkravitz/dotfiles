@@ -13,6 +13,9 @@ fi
 # Customize to your needs...
 source ~/.shell_common
 
+# OnePassword CLI autocomplete
+eval "$(op completion zsh)"; compdef _op op
+
 # twilio autocomplete setup
 TWILIO_AC_ZSH_SETUP_PATH=/Users/joshua/.twilio-cli/autocomplete/zsh_setup && test -f $TWILIO_AC_ZSH_SETUP_PATH && source $TWILIO_AC_ZSH_SETUP_PATH;
 # The next line updates PATH for the Google Cloud SDK.
@@ -43,3 +46,7 @@ PROMPT='%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 # Show number of jobs in prompt
 PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
