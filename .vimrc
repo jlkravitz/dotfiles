@@ -9,7 +9,7 @@ map <C-n> :NERDTreeToggle<CR>
 Plug 'tpope/vim-fugitive'                 " git support
 Plug 'kien/ctrlp.vim'                     " fuzzy search
 Plug 'bling/vim-airline'                  " bottom info bar
-" Plug 'Valloric/YouCompleteMe'             " code completion
+Plug 'Valloric/YouCompleteMe'             " code completion
 Plug 'airblade/vim-gitgutter'             " git diff in gutter
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
