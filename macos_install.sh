@@ -12,6 +12,9 @@ brew bundle
 # symlink dotfiles
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
+ln -s ~/dotfiles/.zimrc ~/.zimrc
+mkdir ~/.zim
+ln -s ~/dotfiles/.zim/init.zsh ~/.zim/init.zsh
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
