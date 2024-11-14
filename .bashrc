@@ -17,3 +17,5 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 source "$HOME/.cargo/env"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

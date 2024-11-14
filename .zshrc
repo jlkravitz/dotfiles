@@ -212,3 +212,5 @@ function md() {
 function nullify() {
   "$@" >/dev/null 2>&1
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

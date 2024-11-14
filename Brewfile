@@ -1,8 +1,5 @@
-tap "homebrew/core"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "buo/cask-upgrade"
-tap "homebrew/cask-fonts"
 tap "1password/tap"
 tap "homebrew/bundle"
 brew "csvkit"

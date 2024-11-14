@@ -1,3 +1,10 @@
+" Install Vim Plug if not already here.
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 """""" BEGIN Plug CONFIG """"""
 call plug#begin('~/.vim/bundle')
 
@@ -9,7 +16,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Plug 'tpope/vim-fugitive'                 " git support
 Plug 'kien/ctrlp.vim'                     " fuzzy search
 Plug 'bling/vim-airline'                  " bottom info bar
-Plug 'Valloric/YouCompleteMe'             " code completion
+" Plug 'Valloric/YouCompleteMe'             " code completion
 Plug 'airblade/vim-gitgutter'             " git diff in gutter
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
