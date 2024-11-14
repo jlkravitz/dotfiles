@@ -29,6 +29,12 @@ defaults -currentHost write -g AppleFontSmoothing -int 0
 # Only show open applications in the Dock
 defaults write com.apple.dock static-only -bool true; 
 
+touch ~/.ssh/config
+cat << EOF >> ~/.ssh/config
+Host *
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+EOF
+
 # relaunch Finder
 killall Finder
 
@@ -36,8 +42,3 @@ killall Finder
 killall Dock
 
 # Setup 1password SSH agent
-touch ~/.ssh/config
-cat << EOF >> ~/.ssh/config
-Host *
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-EOF
