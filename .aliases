@@ -47,3 +47,24 @@ alias brewdate="brew -v update; brew upgrade --force-bottle --cleanup; brew cask
 #   2) `config checkout`.
 alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
+
+alias rclone-drive-to-drive="./rclone copy --fast-list --log-file=<file>.log --drive-skip-dangling-shortcuts --drive-copy-shortcut-content --drive-server-side-across-configs -P <drive1>:<folder> <drive2>:<folder>"
+
+porthog () {
+	PORT=$1
+	lsof -iTCP -sTCP:LISTEN -P | grep --color=auto "$PORT"
+}
+
+function git_branch_cleanup_dangerous {
+    echo "This will delete all branches that are no longer on the remote."
+    read -q "REPLY?Are you sure you want to continue? (y/n) "
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+	git fetch --prune
+	git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+    else
+	echo "Aborting."
+    fi
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+    echo "Cleanup complete."
+}

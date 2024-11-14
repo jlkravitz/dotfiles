@@ -4,3 +4,5 @@ source ~/.bashrc
 
 source /Users/joshua/.config/broot/launcher/bash/br
 source "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

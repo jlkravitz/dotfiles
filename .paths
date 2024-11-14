@@ -6,6 +6,8 @@ export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/3.0.0_1/bin/bundle:$PATH"
+export PATH="/Users/joshua/Downloads/sonar-scanner-6.1.0.4477-macosx-x64/bin/:$PATH"
+export PATH="/Library/PostgreSQL/17/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"

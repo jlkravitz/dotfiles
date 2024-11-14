@@ -25,3 +25,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 source /Users/joshua/.config/broot/launcher/bash/br
 source "$HOME/.cargo/env"
+
+
+. "$HOME/.local/bin/env"

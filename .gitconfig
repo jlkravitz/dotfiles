@@ -17,7 +17,8 @@
     unignore = update-index --no-assume-unchanged
     ignored = !echo "Ignored files:" && git ls-files -v | grep "^[[:lower:]]" | awk '{print $2}'
 [push]
-	default = simple
+  default = simple
+  autoSetupRemote = true
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process

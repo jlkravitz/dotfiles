@@ -15,12 +15,6 @@ source ~/.shell_common
 
 # twilio autocomplete setup
 TWILIO_AC_ZSH_SETUP_PATH=/Users/joshua/.twilio-cli/autocomplete/zsh_setup && test -f $TWILIO_AC_ZSH_SETUP_PATH && source $TWILIO_AC_ZSH_SETUP_PATH;
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/joshua/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joshua/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/joshua/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joshua/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 export PATH="$HOME/.bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -43,3 +37,18 @@ PROMPT='%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 # Show number of jobs in prompt
 PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.cargo/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/joshua/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/joshua/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/joshua/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/joshua/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+. "/Users/joshua/.acme.sh/acme.sh.env"
+
+. "$HOME/.local/bin/env"
