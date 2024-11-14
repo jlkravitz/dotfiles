@@ -15,16 +15,5 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ^ the only downside with this is [up] on the readline will go over all
 # history not just this bash session.
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# load default dotfiles, paths, etc.
-source ~/.shell_common
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-source /Users/joshua/.config/broot/launcher/bash/br
 source "$HOME/.cargo/env"
 
-
-. "$HOME/.local/bin/env"

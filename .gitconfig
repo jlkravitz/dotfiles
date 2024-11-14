@@ -1,7 +1,6 @@
 [user]
 	name = Joshua Kravitz
 	email = jlkravitz@gmail.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHmJghiMvVqnF98kauowEa6MNX4M85lTw7EcAeu1Cjhu
 [core]
     editor = /usr/bin/vim
 	  excludesfile = ~/.gitignore
