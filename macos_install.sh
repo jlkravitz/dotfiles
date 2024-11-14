@@ -1,6 +1,10 @@
 #!/bin/bash
 set -xe
-xcode-select --install
+if ! xcode-select -p &>/dev/null; then
+  xcode-select --install
+else
+  echo "Xcode Command Line Tools are already installed."
+fi
 
 # Install brew
 if ! type -P brew; then
@@ -11,18 +15,17 @@ if ! type -P brew; then
 fi
 
 brew bundle
-mkdir ~/.nvm # nvm, installed by brew, requires this to exist
+mkdir -p ~/.nvm # nvm, installed by brew, requires this to exist
 
 # symlink dotfiles
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/.bashrc ~/.bashrc
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.bashrc ~/.bashrc
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-ln -s ~/dotfiles/.zimrc ~/.zimrc
-zimfw install
- 
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/.zimrc ~/.zimrc
+
 # Disable font smoothing (might?) require reboot
 # from https://tonsky.me/blog/monitors/
 defaults -currentHost write -g AppleFontSmoothing -int 0
@@ -30,6 +33,7 @@ defaults -currentHost write -g AppleFontSmoothing -int 0
 # Only show open applications in the Dock
 defaults write com.apple.dock static-only -bool true; 
 
+# Setup 1password SSH agent
 touch ~/.ssh/config
 cat << EOF >> ~/.ssh/config
 Host *
@@ -42,4 +46,5 @@ killall Finder
 # relaunch Dock
 killall Dock
 
-# Setup 1password SSH agent
+echo "Run \`zimfw install\`"
+ 
