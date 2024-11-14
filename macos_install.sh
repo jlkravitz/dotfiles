@@ -11,6 +11,7 @@ if ! type -P brew; then
 fi
 
 brew bundle
+mkdir ~/.nvm # nvm, installed by brew, requires this to exist
 
 # symlink dotfiles
 ln -s ~/dotfiles/.vimrc ~/.vimrc
