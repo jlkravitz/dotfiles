@@ -1,6 +1,7 @@
 [user]
 	name = Joshua Kravitz
 	email = jlkravitz@gmail.com
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDO+vHhee/4wwrHlkD3wwd7QYfpPpTCglnGV/MQ3kx2uu9AICxOlFw/OFrnnrJ/7CVC/e7j42445VWxxoAWoZz/Fmo+Nxq2I1P64RKlCOzQIrPokgyvJM/mwEw5qu9Pree/GtYOcyoSpL7lGnre99tq+G8UHJceiETxZB4aWDWu6TOIo3ayZZMwn+uNqrHOtee83A4WtpudqH04XINumlUmfBy9icQndvp7toEgIRALC97LwQYLkPcortuU0yx0qoTtAbTtLiqUInS2cKVBC2LbnYkuS6dfkZewIHmN0RStPVYaG6SjnxjZ0JHjcFJ52OiE6eQAagF86LM9K71H5N7GOLik1A9B8irsNLS3oKPGgMKQReAhAvqQ0a7st8t23P9Z7vUqpTIPmGxLoEx0CpSp1a1MARk/TetsQPRumieYGwl7aMfCFUvqeySAwO6FZJHTDYuRyJqHg5+y8+kvWctWkDpqr/NM5YrhzbKQ978a9o3PudTlyF2nZEPMUxK2cPkUPmcHUxm1KR1Hq59X5BMDCxKbWGnfBkOsqvj+Ct4TujwUX4RSKLgS0RpnOFJEb8zkIv1jJYWTsRuYtBOmsQ4oL70hW1GSzk2AaXGFEwHFrwIs7QkfgtWZMLopv01CzoTmlFTS05wI9SdXZZ9opkewPmwj3Lnbktvxcr4mjgwwNQ==
 [core]
     editor = /usr/bin/vim
 	  excludesfile = ~/.gitignore
@@ -28,3 +29,7 @@
 	defaultBranch = main
 [gpg]
 	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
