@@ -33,6 +33,10 @@ defaults -currentHost write -g AppleFontSmoothing -int 0
 # Only show open applications in the Dock
 defaults write com.apple.dock static-only -bool true; 
 
+# Enable keyboard control at the macOS level (for navigating web pages on Safari, e.g.)
+# See: https://www.a11yproject.com/posts/macos-browser-keyboard-navigation/
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
 # Setup 1password SSH agent
 touch ~/.ssh/config
 cat << EOF >> ~/.ssh/config
