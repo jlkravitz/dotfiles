@@ -70,6 +70,7 @@ cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Turnip Timer", id: 1502924853
+mas "Xcode", id: 497799835
 vscode "1yib.rust-bundle"
 vscode "ahmadalli.vscode-nginx-conf"
 vscode "bastienboutonnet.vscode-dbt"
