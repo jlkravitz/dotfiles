@@ -17,14 +17,7 @@ fi
 brew bundle
 mkdir -p ~/.nvm # nvm, installed by brew, requires this to exist
 
-# symlink dotfiles
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
-
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.zimrc ~/.zimrc
+./symlink_dotfiles.sh
 
 # Disable font smoothing (might?) require reboot
 # from https://tonsky.me/blog/monitors/
