@@ -9,8 +9,8 @@ fi
 # Install brew
 if ! type -P brew; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo >> /Users/joshua/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/joshua/.zprofile
+    echo >> /Users/joshua/.zshenv
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/joshua/.zshenv
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
