@@ -155,6 +155,7 @@ export HISTCONTROL=ignoredups:erasedups         # no duplicate entries
 export HISTSIZE=100000                          # big big history (default is 500)
 export HISTFILESIZE=$HISTSIZE                   # big big history
 
+alias pip-sync="uv pip sync"
 # Easier navigation: .., ..., ~, and -
 alias ..="cd .."
 alias cd..="cd .."
@@ -224,3 +225,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source /Users/joshua/.config/op/plugins.sh
+
+alias gam="/Users/joshua/bin/gam7/gam"

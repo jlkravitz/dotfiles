@@ -59,6 +59,9 @@ syntax on
 filetype plugin indent on
 set encoding=utf-8
 
+" MacOS requires explicit setting of regular expression engine: https://stackoverflow.com/a/72231901
+set regexpengine=0
+
 " Show line numbers.
 set number
 

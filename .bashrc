@@ -19,3 +19,5 @@ source "$HOME/.cargo/env"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+alias gam="/Users/joshua/bin/gam7/gam"
