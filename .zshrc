@@ -231,3 +231,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 source /Users/joshua/.config/op/plugins.sh
 
 alias gam="/Users/joshua/bin/gam7/gam"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
