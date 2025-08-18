@@ -234,3 +234,5 @@ alias gam="/Users/joshua/bin/gam7/gam"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+eval "$(zoxide init zsh)"
+
