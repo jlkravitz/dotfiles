@@ -183,7 +183,8 @@ alias cleandstore="find . -name '*.DS_Store' -type f -ls -delete"
 alias brewdate="brew -v update; brew upgrade --force-bottle --cleanup; brew cask -v upgrade; brew cleanup; brew cask cleanup; brew prune; brew doctor"
 
 alias rclone-drive-to-drive="./rclone copy --fast-list --log-file=<file>.log --drive-skip-dangling-shortcuts --drive-copy-shortcut-content --drive-server-side-across-configs -P <drive1>:<folder> <drive2>:<folder>"
-
+# For displaying markdown files
+alias glow="glow -s dark -p"
 porthog () {
 	PORT=$1
 	lsof -iTCP -sTCP:LISTEN -P | grep --color=auto "$PORT"
@@ -236,3 +237,4 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 eval "$(zoxide init zsh)"
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

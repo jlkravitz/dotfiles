@@ -33,3 +33,5 @@
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [commit]
 	gpgsign = true
+[coderabbit]
+	machineId = cli/41db5e64c95741db869554c728b6e85e

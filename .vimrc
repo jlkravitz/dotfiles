@@ -25,6 +25,7 @@ Plug 'highwaynoise/chuck.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 " Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 
+
 " All of your Plugins must be added before the following line
 call plug#end()
 """""" END Plug CONFIG """"""
