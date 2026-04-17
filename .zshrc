@@ -239,7 +239,13 @@ source /Users/joshua/.config/op/plugins.sh
 
 alias gam="/Users/joshua/bin/gam7/gam"
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# Lazy terraform completion — bashcompinit re-runs compinit (~280ms) so defer it
+_terraform_lazy_complete() {
+  unfunction _terraform_lazy_complete
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /opt/homebrew/bin/terraform terraform
+  return 124
+}
+compdef _terraform_lazy_complete terraform
 eval "$(zoxide init zsh)"
 
