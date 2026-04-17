@@ -249,3 +249,14 @@ _terraform_lazy_complete() {
 compdef _terraform_lazy_complete terraform
 eval "$(zoxide init zsh)"
 
+# Precompile startup files — zsh prefers .zwc if newer, skipping parse cost.
+# Rebuild when the source is newer (or the .zwc is missing).
+() {
+  local f
+  for f in ${ZDOTDIR:-${HOME}}/.zshrc ${ZIM_HOME:-${HOME}/.zim}/init.zsh; do
+    if [[ -s $f && (! -s $f.zwc || $f -nt $f.zwc) ]]; then
+      zcompile -R -- $f.zwc $f 2>/dev/null
+    fi
+  done
+}
+
