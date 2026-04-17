@@ -183,7 +183,8 @@ alias cleandstore="find . -name '*.DS_Store' -type f -ls -delete"
 alias brewdate="brew -v update; brew upgrade --force-bottle --cleanup; brew cask -v upgrade; brew cleanup; brew cask cleanup; brew prune; brew doctor"
 
 alias rclone-drive-to-drive="./rclone copy --fast-list --log-file=<file>.log --drive-skip-dangling-shortcuts --drive-copy-shortcut-content --drive-server-side-across-configs -P <drive1>:<folder> <drive2>:<folder>"
-
+# For displaying markdown files
+alias glow="glow -s dark -p"
 porthog () {
 	PORT=$1
 	lsof -iTCP -sTCP:LISTEN -P | grep --color=auto "$PORT"
@@ -225,6 +226,7 @@ _load_nvm() {
   unset -f nvm node npm npx 2>/dev/null
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 nvm()  { _load_nvm; nvm  "$@"; }
 node() { _load_nvm; node "$@"; }
@@ -259,4 +261,3 @@ eval "$(zoxide init zsh)"
     fi
   done
 }
-
