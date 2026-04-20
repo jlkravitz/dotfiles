@@ -217,6 +217,8 @@ function nullify() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export PATH="/Users/joshua/.local/bin/:$PATH"
+
 # Settings required for items in Brewfile
 # rustup
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
