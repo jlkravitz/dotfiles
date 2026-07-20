@@ -93,6 +93,15 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Initialize modules
 # ------------------
 
+# Completion fpath — must be IDENTICAL in every interactive shell (login and
+# non-login) and set before zim's compinit: zim fingerprints fpath contents to
+# decide compdump freshness, so any login/non-login mismatch forces a full
+# ~800ms completion rebuild on the next new tab.
+typeset -U path fpath
+fpath=(/opt/homebrew/share/zsh/site-functions ~/.local/share/zsh/site-functions $fpath)
+# OrbStack: adds ~/.orbstack/bin to PATH and its completions dir to fpath
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -145,15 +154,11 @@ EDITOR='vim'
 ## gotta tune that bash_history…
 ##
 
-# timestamps for later analysis.
-# www.debian-administration.org/users/rossen/weblog/1
-export HISTTIMEFORMAT='%F %T '
-
-# keep history up to date, across sessions, in realtime
-#  http://unix.stackexchange.com/a/48113
-export HISTCONTROL=ignoredups:erasedups         # no duplicate entries
-export HISTSIZE=100000                          # big big history (default is 500)
-export HISTFILESIZE=$HISTSIZE                   # big big history
+# big big history (HISTTIMEFORMAT/HISTCONTROL/HISTFILESIZE were bash-isms —
+# zsh ignores them; timestamps come from EXTENDED_HISTORY, dups from
+# HIST_IGNORE_ALL_DUPS above)
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
 
 alias pip-sync="uv pip sync"
 # Easier navigation: .., ..., ~, and -
@@ -222,24 +227,21 @@ export PATH="/Users/joshua/.local/bin/:$PATH"
 # Settings required for items in Brewfile
 # rustup
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
-# nvm (lazy-loaded — sourcing nvm.sh on every shell adds seconds on cold start)
+# nvm — no versions installed via nvm; node/npm/npx are Homebrew's, already on
+# PATH. No shim functions: shadowing the real binaries broke scripts/tools.
+# Lazy stub only so `nvm` itself still works if ever needed.
 export NVM_DIR="$HOME/.nvm"
-_load_nvm() {
-  unset -f nvm node npm npx 2>/dev/null
+nvm() {
+  unfunction nvm
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
 }
-nvm()  { _load_nvm; nvm  "$@"; }
-node() { _load_nvm; node "$@"; }
-npm()  { _load_nvm; npm  "$@"; }
-npx()  { _load_nvm; npx  "$@"; }
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-source /Users/joshua/.config/op/plugins.sh
+# source /Users/joshua/.config/op/plugins.sh
 
 alias gam="/Users/joshua/bin/gam7/gam"
 
@@ -251,7 +253,16 @@ _terraform_lazy_complete() {
   return 124
 }
 compdef _terraform_lazy_complete terraform
-eval "$(zoxide init zsh)"
+
+# zoxide — source a cached copy of `zoxide init zsh` (skips a ~7ms fork per
+# shell); regenerated automatically when the zoxide binary is updated.
+() {
+  local zcache=${XDG_CACHE_HOME:-$HOME/.cache}/zoxide-init.zsh
+  if [[ ! -s $zcache || /opt/homebrew/bin/zoxide -nt $zcache ]]; then
+    mkdir -p ${zcache:h} && zoxide init zsh >| $zcache
+  fi
+  source $zcache
+}
 
 # Precompile startup files — zsh prefers .zwc if newer, skipping parse cost.
 # Rebuild when the source is newer (or the .zwc is missing).
@@ -263,3 +274,10 @@ eval "$(zoxide init zsh)"
     fi
   done
 }
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+
+# sentry
+export PATH="/Users/joshua/.sentry/bin:$PATH"
+# (sentry completions fpath is set before zim init, top of file)
