@@ -97,6 +97,12 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # non-login) and set before zim's compinit: zim fingerprints fpath contents to
 # decide compdump freshness, so any login/non-login mismatch forces a full
 # ~800ms completion rebuild on the next new tab.
+#
+# Two zsh installs exist (login shell is /bin/zsh; PATH resolves to Homebrew's
+# zsh) with different built-in function dirs, so they can never share one
+# compdump — key the dumpfile by version + install prefix (usr vs opt) while
+# fpath[-1] is still the running binary's own functions dir.
+zstyle ':zim:completion' dumpfile ${ZDOTDIR:-$HOME}/.zcompdump-${ZSH_VERSION}-${${fpath[-1]#/}%%/*}
 typeset -U path fpath
 fpath=(/opt/homebrew/share/zsh/site-functions ~/.local/share/zsh/site-functions $fpath)
 # OrbStack: adds ~/.orbstack/bin to PATH and its completions dir to fpath
