@@ -233,15 +233,11 @@ export PATH="/Users/joshua/.local/bin/:$PATH"
 # Settings required for items in Brewfile
 # rustup
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
-# nvm — no versions installed via nvm; node/npm/npx are Homebrew's, already on
-# PATH. No shim functions: shadowing the real binaries broke scripts/tools.
-# Lazy stub only so `nvm` itself still works if ever needed.
-export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unfunction nvm
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  nvm "$@"
-}
+# fnm — node version per directory (.nvmrc / .node-version, searched upward),
+# switched automatically on cd; falls back to `fnm default` elsewhere.
+# yarn/pnpm versions come from each project's package.json "packageManager"
+# field via corepack (enabled on every `fnm install`).
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --shell zsh)"
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
