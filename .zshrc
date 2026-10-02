@@ -3,6 +3,8 @@
 # User configuration sourced by interactive shells
 #
 
+(( $+functions[_zmark] )) && _zmark zshrc_start  # startup profiler (no-op unless enabled in ~/.zshenv)
+
 # -----------------
 # Zsh configuration
 # -----------------
@@ -125,6 +127,7 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
+(( $+functions[_zmark] )) && _zmark zim_done  # startup profiler (no-op unless enabled in ~/.zshenv)
 
 # ------------------------------
 # Post-init module configuration
@@ -283,3 +286,30 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # sentry
 export PATH="/Users/joshua/.sentry/bin:$PATH"
 # (sentry completions fpath is set before zim init, top of file)
+
+# --- startup profiler report ----------------------------------------------
+# Use for profiling startup times. Inactive unless _zmark is defined (uncomment
+# the profiler block at the top of ~/.zshenv to enable).
+# Logs one line per interactive shell to ~/.cache/zsh-startup.log with a
+# timing breakdown, and — when the completion dump was rebuilt during this
+# startup — a diff of the fingerprint that caused it (vs .zcompdump.dat.prev).
+if (( $+functions[_zmark] )); then
+  _zprof_report() {
+    add-zsh-hook -d precmd _zprof_report
+    local -F total=$(( (EPOCHREALTIME - _zprof_t0) * 1000 ))
+    local dump rebuilt=no logf=~/.cache/zsh-startup.log
+    zstyle -s ':zim:completion' dumpfile dump || dump=${ZDOTDIR:-$HOME}/.zcompdump
+    zmodload -F zsh/stat b:zstat 2>/dev/null
+    local -a s; zstat -A s +mtime $dump 2>/dev/null && (( s[1] >= _zprof_t0 - 1 )) && rebuilt=yes
+    print -r -- "$(strftime '%F %T' $EPOCHSECONDS) total=${total%%.*}ms marks:[${(j: :)_zprof_marks}] rebuilt=$rebuilt login=$options[login] TERM=$TERM tty=$TTY parent=$(ps -o comm= -p $PPID 2>/dev/null)" >>| $logf
+    if [[ $rebuilt == yes && -e $dump.dat.prev ]]; then
+      print -r -- "  fingerprint diff (what invalidated the completion dump):" >>| $logf
+      diff <(tr '\0' '\n' < $dump.dat.prev) <(tr '\0' '\n' < $dump.dat) 2>&1 | head -30 >>| $logf
+    fi
+    if [[ ! -e $dump.dat.prev || $dump.dat -nt $dump.dat.prev ]]; then
+      command cp -f $dump.dat $dump.dat.prev 2>/dev/null
+    fi
+  }
+  autoload -Uz add-zsh-hook && add-zsh-hook precmd _zprof_report
+fi
+# --- end profiler report --------------------------------------------------
